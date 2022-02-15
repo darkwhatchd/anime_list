@@ -8,6 +8,9 @@ RSpec.describe Anime, type: :model do
   it { is_expected.to validate_presence_of(:status) }
   it { is_expected.to validate_presence_of(:release_date) }
 
+  it { is_expected.to have_many(:favorite_animes).dependent(:destroy) }
+  it { is_expected.to have_many(:users).through(:favorite_animes) }
+
   it "can't have future release_date" do
     subject.release_date = Date.tomorrow
     subject.valid?
