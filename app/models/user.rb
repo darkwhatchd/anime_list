@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :favorite_animes, dependent: :destroy
   has_many :animes, through: :favorite_animes
+  has_many :follow_animes, dependent: :destroy
 
   validates :name, presence: true
   validates :profile, presence: true

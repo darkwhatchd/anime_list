@@ -7,4 +7,5 @@ RSpec.describe User, type: :model do
 
   it { is_expected.to have_many(:favorite_animes).dependent(:destroy) }
   it { is_expected.to have_many(:animes).through(:favorite_animes) }
+  it { is_expected.to have_many(:follow_animes).dependent(:destroy) }
 end

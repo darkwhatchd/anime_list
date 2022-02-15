@@ -1,6 +1,7 @@
 class Anime < ApplicationRecord
   has_many :favorite_animes, dependent: :destroy
   has_many :users, through: :favorite_animes
+  has_many :follow_animes, dependent: :destroy
 
   has_one_attached :cover
   has_rich_text :description
