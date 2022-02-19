@@ -1,0 +1,2 @@
+module Animefront::ClientHelper
+end

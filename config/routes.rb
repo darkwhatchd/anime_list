@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   scope module: "animefront" do
     root to: "home#index"
+    resources :animes, only: %i[index show]
   end
 end
