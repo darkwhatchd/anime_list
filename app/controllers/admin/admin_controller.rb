@@ -4,6 +4,14 @@ module Admin
 
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+    def policy_scope(scope)
+      super([:admin, scope])
+    end
+
+    def authorize(record, query = nil)
+      super([:admin, record], query)
+    end
+
     private
 
     def user_not_authorized
