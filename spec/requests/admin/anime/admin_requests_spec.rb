@@ -18,7 +18,6 @@ RSpec.describe "Admin::Animes, as :admin", type: :request do
       let(:anime_params) { { anime: attributes_for(:anime, cover: fixture_file_upload("test.jpg", "image/jpg")) } }
 
       it "adds a new anime" do
-        puts anime_params
         expect do
           post url, headers: sign_in(admin_user), params: anime_params
         end.to change(Anime, :count).by(1)
