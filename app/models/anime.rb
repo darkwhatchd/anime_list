@@ -12,4 +12,6 @@ class Anime < ApplicationRecord
   validates :status, presence: true
   validates :release_date, presence: true, future_date: true
   validates :finish_date, future_date: true
+
+  enum status: { complete: 0, in_progress: 1, stopped: 2 }
 end

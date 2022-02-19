@@ -1,0 +1,2 @@
+module Admin::AnimesHelper
+end

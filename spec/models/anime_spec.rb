@@ -7,6 +7,7 @@ RSpec.describe Anime, type: :model do
   it { is_expected.to validate_presence_of(:description) }
   it { is_expected.to validate_presence_of(:status) }
   it { is_expected.to validate_presence_of(:release_date) }
+  it { is_expected.to define_enum_for(:status).with_values({ complete: 0, in_progress: 1, stopped: 2 }) }
 
   it { is_expected.to have_many(:favorite_animes).dependent(:destroy) }
   it { is_expected.to have_many(:users).through(:favorite_animes) }

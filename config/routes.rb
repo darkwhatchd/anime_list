@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "home#index"
     resources :users
+    resources :animes
   end
 
   scope module: "animefront" do
