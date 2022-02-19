@@ -1,6 +1,7 @@
 module Admin
   class AdminController < ApplicationController
     include Pundit::Authorization
+    after_action :verify_authorized
 
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
