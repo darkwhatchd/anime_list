@@ -1,5 +1,7 @@
 module Animefront
   class FollowAnimesController < ClientController
+    before_action :authenticate_user!
+
     def index
       authorize FollowAnime, :index?
       @following_animes = current_user.follow_animes

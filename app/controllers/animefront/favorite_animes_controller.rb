@@ -1,5 +1,7 @@
 module Animefront
   class FavoriteAnimesController < ClientController
+    before_action :authenticate_user!
+
     def index
       authorize FavoriteAnime, :index?
       @favorites = current_user.favorite_animes
