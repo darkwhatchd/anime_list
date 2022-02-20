@@ -3,11 +3,11 @@ module Animefront
     include Pundit::Authorization
 
     def policy_scope(scope)
-      super([:admin, scope])
+      super([:animefront, scope])
     end
 
     def authorize(record, query = nil)
-      super([:admin, record], query)
+      super([:animefront, record], query)
     end
   end
 end
