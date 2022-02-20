@@ -1,14 +1,14 @@
 require "rails_helper"
 
 # Specs in this file have access to a helper object that includes
-# the Animefront::AnimesHelper. For example:
+# the Animefront::FollowAnimesHelper. For example:
 #
-# describe Animefront::AnimesHelper do
+# describe Animefront::FollowAnimesHelper do
 #   describe "string concat" do
 #     it "concats two strings with spaces" do
 #       expect(helper.concat_strings("this","that")).to eq("this that")
 #     end
 #   end
 # end
-RSpec.describe Animefront::AnimesHelper, type: :helper do
+RSpec.describe Animefront::FollowAnimesHelper, type: :helper do
 end

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :admin do
     root to: "home#index"
@@ -10,6 +9,10 @@ Rails.application.routes.draw do
 
   scope module: "animefront" do
     root to: "home#index"
-    resources :animes, only: %i[index show]
+    get "/following", to: "follow_animes#index"
+
+    resources :animes, only: %i[index show] do
+      resources :follow_animes, only: %i[create destroy]
+    end
   end
 end
