@@ -1,0 +1,21 @@
+<section class="section">
+  <% @following_animes.each do |followed| %>
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        <a href="<%= anime_path(followed.anime) %>"><%= image_tag followed.anime.cover %></a>
+        <p class="title"><%= followed.anime.name %></p>
+        <p class="subtitle">Lançamento: <%= followed.anime.release_date.strftime("%d/%m/%Y") %></p>
+        <div class="field is-grouped is-grouped-centered">
+          <p class="control">
+            <%= link_to "Deixar de Seguir", anime_follow_anime_path(followed.anime, followed), method: :delete, class: "button is-danger" %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+
+<div class="pagination">
+  <p class="title"><%= paginate @following_animes %></p>
+</div>
+</section>

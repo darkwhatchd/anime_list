@@ -4,7 +4,9 @@ module Animefront
 
     def index
       authorize FollowAnime, :index?
-      @following_animes = current_user.follow_animes
+      @following_animes = current_user.follow_animes.order(
+        created_at: :desc,
+      ).page(params[:page]).per(5)
     end
 
     def create
