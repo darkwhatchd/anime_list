@@ -11,6 +11,13 @@ module Admin
 
     def show
       authorize User, :show?
+      @favorites = @user.favorite_animes.order(
+        created_at: :desc,
+      ).page(params[:page]).per(15)
+
+      @following = @user.follow_animes.order(
+        created_at: :desc,
+      ).page(params[:page]).per(15)
     end
 
     def new

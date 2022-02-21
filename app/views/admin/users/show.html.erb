@@ -1,0 +1,58 @@
+<div class="columns">
+  <div class="column is-full">
+    <nav class="level">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Usuário</p>
+          <p class="title is-5"><%= @user.name %></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Editar</p>
+          <%= link_to icon("fas", "pen"), edit_admin_user_path(@user), class: "button is-primary is-outlined" %>
+        </div>
+      </div>
+      <% if @user.otaku? %>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading">Excluir</p>
+            <%= link_to icon("fas", "trash-alt"), admin_user_path(@user), method: :delete, data: { confirm: "Tem certeza?" }, class: "button is-danger is-outlined" %>
+          </div>
+        </div>
+      <% end %>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Voltar</p>
+          <%= link_to icon("fas", "arrow-left"), (:back || admin_root_path), class: "button is-primary is-outlined" %>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<hr>
+
+<div class="box">
+  <div class="columns">
+    <div class="column">
+      <h1 class="title is-4">Nome</h1>
+      <p class="subtitle"><%= @user.name %></p>
+    </div>
+    <div class="column">
+      <h1 class="title is-4">Email</h1>
+      <p class="subtitle"><%= @user.email %></p>
+    </div>
+  </div>
+  <hr>
+  <div class="columns">
+    <div class="column">
+      <h1 class="title is-4">Animes Favoritos</h1>
+      <%= render "animes_table", animes: @favorites %>
+    </div>
+    <div class="column">
+      <h1 class="title is-4">Animes Seguidos</h1>
+      <%= render "animes_table", animes: @following %>
+    </div>
+  </div>
+</div>
