@@ -1,0 +1,5 @@
+<% if current_user %>
+  <%= render "authenticated_index" %>
+<% else %>
+  <%= render "unauthenticated_index" %>
+<% end %>

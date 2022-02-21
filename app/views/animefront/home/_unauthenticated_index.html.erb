@@ -1,0 +1,63 @@
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-5">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-primary">
+          <p class="title">Cadastre-se</p>
+          <p class="subtitle">
+            Diversos animes para você escolher
+          </p>
+        </article>
+        <article class="tile is-child notification is-warning">
+          <p class="title">Seguir ou Favoritar</p>
+          <p class="subtitle">
+            Você pode seguir ou favoritar os animes que quiser, e encontrar eles na parte de animes seguidos/favoritos
+          </p>
+        </article>
+        <article class="tile is-child notification is-danger">
+          <p class="title">Informações</p>
+          <p class="subtitle">
+            Estamos sempre atualizando informações sobre os animes, basta clicar e ver as descrições
+          </p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-info">
+          <p class="title">Atualizado</p>
+          <p class="subtitle">
+            Sempre com os melhores animes
+          </p>
+          <figure class="image is-4by3">
+            <img src="https://www.animeunited.com.br/oomtumtu/2021/09/kimetsu.jpg">
+          </figure>
+        </article>
+      </div>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-success">
+      <div class="content">
+        <p class="title">Veja alguns animes:</p>
+        <div class="content">
+          <% @animes.each_with_index do |anime, index| %>
+            <% if index % 2 == 0 %>
+              <div class="columns has-text-centered">
+                <div class="column is-half">
+                  <a href="/animes/<%= anime.id %>"><%= image_tag anime.cover %></a>
+                  <p class="title"><%= anime.name %></p>
+                </div>
+            <% else %>
+                <div class="column is-half">
+                  <a href="/animes/<%= anime.id %>"><%= image_tag anime.cover %></a>
+                  <p class="title"><%= anime.name %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

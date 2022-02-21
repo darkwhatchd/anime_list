@@ -1,0 +1,29 @@
+<div class="table-container">
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th class="has-text-centered">Cover</th>
+        <th class="has-text-centered">Nome</th>
+        <th class="has-text-centered">Status</th>
+        <th class="has-text-centered">Release Date</th>
+        <th class="has-text-centered">Finish Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @following.each do |followed| %>
+        <tr>
+          <td class="has-text-centered"><a href="<%= anime_path(followed.anime) %>"><%= image_tag followed.anime.cover, size: "70x70" %></a></td>
+          <td class="has-text-centered"><%= followed.anime.name %></td>
+          <td class="has-text-centered"><%= followed.anime.status %></td>
+          <td class="has-text-centered"><%= followed.anime.release_date %></td>
+          <td class="has-text-centered"><%= followed.anime.finish_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<% if @following.blank? %>
+  <p class="title is-4 has-text-info has-text-centered">Nenhum anime aqui :(</p>
+<% end %>

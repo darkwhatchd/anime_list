@@ -5,8 +5,8 @@ class UnfollowFavorite
   end
 
   def unfollow_favorite
-    if @following.anime == @user.favorite_animes.find_by(anime: @following.anime)
-      @user.favorite_animes.find_by(anime: @following.anime).destroy!
+    if @user.favorite_animes.find_by(anime: @following.anime)
+      @user.favorite_animes.find_by(anime: @following.anime).destroy
     end
   end
 end

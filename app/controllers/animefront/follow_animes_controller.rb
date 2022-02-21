@@ -22,8 +22,8 @@ module Animefront
       @following_anime = current_user.follow_animes.find(params[:id])
       authorize @following_anime, :destroy?
 
+      UnfollowFavorite.new(current_user, @following_anime).unfollow_favorite
       if @following_anime.destroy
-        UnfollowFavorite.new(current_user, @following_anime).unfollow_favorite
         redirect_to "/following", status: :ok
       else
         flash.now[:notice] = "Unable to unfollow this anime"

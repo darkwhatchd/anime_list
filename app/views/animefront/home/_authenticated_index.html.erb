@@ -1,0 +1,21 @@
+<div class="box">
+  <div class="columns">
+    <div class="column is-half">
+      <h1 class="title">Seus Favoritos:</h1>
+      <%= render "favorites_table" %>
+    </div>
+    <div class="column is-half">
+      <h1 class="title">Seus Animes seguidos:</h1>
+      <%= render "following_table" %>
+    </div>
+  </div>
+</div>
+<hr>
+<h1 class="title">Mais animes</h1>
+<div class="columns">
+  <% @animes.each do |anime| %>
+    <div class="column">
+      <%= render "anime_card", anime: anime %>
+    </div>
+  <% end %>
+</div>

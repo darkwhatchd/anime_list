@@ -5,7 +5,7 @@ class FollowFavorite
   end
 
   def follow_favorite
-    unless @favorite.anime == @user.follow_animes.find_by(anime: @favorite.anime)
+    unless @user.follow_animes.find_by(anime: @favorite.anime)
       @user.follow_animes.create(anime: @favorite.anime)
     end
   end

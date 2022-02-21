@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card-image">  
+    <figure class="image is-4by3">
+      <a href="<%= anime_path(anime.id) %>"><%= image_tag anime.cover %>
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="title is-4"><%= anime.name %></p>
+        <% if current_user %>
+          <div class="field is-grouped is-grouped-centered">
+            <p class="control">
+              <% if current_user.favorite_animes.find_by(anime: anime) %>
+                <%= link_to icon("fas fa-2x", "star", class: "has-text-warning"), anime_favorite_anime_path(anime.id, current_user.favorite_animes.find_by(anime: anime)), method: :delete %>
+              <% else %>
+                <%= link_to icon("far fa-2x", "star", class: "has-text-warning"), anime_favorite_animes_path(anime.id), method: :post %>
+              <% end %>
+            </p>
+            <p class="control">
+              <% if current_user.follow_animes.find_by(anime: anime) %>
+                <%= link_to icon("fas fa-2x", "thumbs-up", class: "has-text-info "), anime_follow_anime_path(anime.id, current_user.follow_animes.find_by(anime: anime)), method: :delete %>
+              <% else %>
+                <%= link_to icon("far fa-2x", "thumbs-up", class: "has-text-info "), anime_follow_animes_path(anime.id), method: :post %>
+              <% end %>
+            </p>
+          </div>
+        <% end %>          
+      </div>
+    </div>
+  </div>
+</div>
