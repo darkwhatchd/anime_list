@@ -1,0 +1,69 @@
+<div class="columns">
+  <div class="column is-full">
+    <nav class="level">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Anime</p>
+          <p class="title is-5"><%= @anime.name %></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Editar</p>
+          <%= link_to icon("fas", "pen"), edit_admin_anime_path(@anime), class: "button is-primary is-outlined" %>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Excluir</p>
+          <%= link_to icon("fas", "trash-alt"), admin_anime_path(@anime), method: :delete, data: { confirm: "Tem certeza?" }, class: "button is-danger is-outlined" %>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Voltar</p>
+          <%= link_to icon("fas", "arrow-left"), (:back || admin_root_path), class: "button is-primary is-outlined" %>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<hr>
+
+<div class="box">
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <%= image_tag @anime.cover %>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <h1 class="title is-4">Nome</h1>
+      <p class="subtitle"><%= @anime.name %></p>
+    </div>
+    <div class="column">
+      <h1 class="title is-4">Status</h1>
+      <p class="subtitle"><%= @anime.status %></p>
+    </div>
+    <div class="column">
+      <h1 class="title is-4">Lançamento</h1>
+      <p class="subtitle"><%= @anime.release_date %></p>
+    </div>
+    <% if @anime.finish_date %>
+      <div class="column">
+        <h1 class="title is-4">Finalizado</h1>
+        <p class="subtitle"><%= @anime.finish_date %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <div class="columns">
+    <div class="column">
+      <p><%= @anime.description %></p>
+    </div>
+  </div>
+</div>

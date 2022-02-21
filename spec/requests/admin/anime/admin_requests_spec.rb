@@ -29,9 +29,9 @@ RSpec.describe "Admin::Animes, as :admin", type: :request do
         expect(anime_params[:anime][:name]).to eq expected_anime.name
       end
 
-      it "returns success status" do
+      it "returns found status" do
         post url, headers: sign_in(admin_user), params: anime_params
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:found)
       end
     end
 
@@ -75,9 +75,9 @@ RSpec.describe "Admin::Animes, as :admin", type: :request do
           expect(Anime.find(anime.id)).to eq(expected_anime)
         end
 
-        it "returns success status" do
+        it "returns found status" do
           patch url, headers: sign_in(admin_user), params: anime_params
-          expect(response).to have_http_status(:ok)
+          expect(response).to have_http_status(:found)
         end
       end
 
@@ -113,7 +113,7 @@ RSpec.describe "Admin::Animes, as :admin", type: :request do
 
     it "returns success status" do
       delete url, headers: sign_in(admin_user)
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:found)
     end
   end
 end

@@ -2,4 +2,4 @@ en:
   activerecord:
     errors:
       messages:
-        future_date: "can't be past date"
+        future_date: "can't be future date"

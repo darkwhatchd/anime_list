@@ -29,9 +29,9 @@ RSpec.describe "Admin::Users as :admin", type: :request do
         expect(user_params[:user][:name]).to eq expected_user.name
       end
 
-      it "returns success status" do
+      it "returns found status" do
         post url, headers: sign_in(admin_user), params: user_params
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:found)
       end
     end
 
@@ -75,7 +75,7 @@ RSpec.describe "Admin::Users as :admin", type: :request do
 
         it "returns success status" do
           patch url, headers: sign_in(admin_user), params: user_params
-          expect(response).to have_http_status(:ok)
+          expect(response).to have_http_status(:found)
         end
       end
 
@@ -110,7 +110,7 @@ RSpec.describe "Admin::Users as :admin", type: :request do
 
       it "returns success status" do
         delete url, headers: sign_in(admin_user)
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:found)
       end
     end
   end

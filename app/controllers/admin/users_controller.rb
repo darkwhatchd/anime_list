@@ -35,7 +35,7 @@ module Admin
       @user = User.new
       @user.attributes = user_params
       if @user.save
-        redirect_to admin_users_path, notice: "User was successfully created.", status: :ok
+        redirect_to admin_users_path, notice: "User was successfully created."
       else
         render :new, status: :unprocessable_entity
       end
@@ -47,7 +47,7 @@ module Admin
       @user.attributes = user_params
 
       if @user.save
-        redirect_to admin_users_path, notice: "User was successfully updated.", status: :ok
+        redirect_to admin_users_path, notice: "User was successfully updated."
       else
         render :edit, status: :unprocessable_entity
       end
@@ -57,7 +57,7 @@ module Admin
       authorize User, :destroy?
 
       @user.destroy
-      redirect_to admin_users_path, notice: "User was successfully destroyed.", status: :ok
+      redirect_to admin_users_path, notice: "User was successfully destroyed."
     end
 
     private

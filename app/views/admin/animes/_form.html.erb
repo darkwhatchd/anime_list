@@ -1,0 +1,76 @@
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+    <div class="card">
+      <div class="card-header">
+        <p class="card-header-title">Formulário de Anime</p>
+      </div>
+      <div class="card-content">
+        <%= form_with(model: anime, url: url) do |form| %>
+          <% if anime.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(anime.errors.count, "error") %> prohibited this anime from being saved:</h2>
+
+              <ul>
+                <% anime.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= form.label :name, class: "label" %>
+            <div class="control">
+              <%= form.text_field :name, class: "input is-primary", placeholder: "Nome" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= form.label :cover, class: "label" %>
+            <div class="control">
+              <%= form.file_field :cover, class: "input is-primary", placeholder: "Nome" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= form.label :description, class: "label" %>
+            <div class="control">
+              <%= form.rich_text_area :description, placeholder: "Descrição" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= form.label :status, class: "label" %>
+            <div class="select is-primary">
+              <%= form.select :status, Anime.statuses.keys.map { |w| [w.humanize, w] } %>
+            </div>
+          </div>
+
+          <div class="columns">
+            <div class="column is-3 is-offset-4">
+              <div class="field">
+                <%= form.label :release_date, class: "label" %>
+                <%= form.date_field :release_date, class: "input is-primary" %>
+              </div>
+            </div>
+            <div class="column is-3">
+              <div class="field">
+                <%= form.label :finish_date, class: "label" %>
+                <%= form.date_field :finish_date, class: "input is-primary" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              <%= form.submit "Concluído", class: "button is-primary" %>
+            </div>
+            <div class="control">
+              <%= link_to "Voltar", admin_animes_path, class: "button is-warning" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

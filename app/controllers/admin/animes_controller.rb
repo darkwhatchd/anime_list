@@ -4,7 +4,9 @@ module Admin
 
     def index
       authorize Anime, :index?
-      @animes = Anime.all
+      @animes = Anime.all.order(
+        created_at: :desc,
+      ).page(params[:page]).per(15)
     end
 
     def show
@@ -13,6 +15,7 @@ module Admin
 
     def new
       authorize Anime, :new?
+      @anime = Anime.new
     end
 
     def edit
@@ -26,7 +29,8 @@ module Admin
       @anime.attributes = anime_params
 
       if @anime.save
-        redirect_to admin_animes_path, notice: "Anime was successfully created.", status: :ok
+        redirect_to admin_animes_path, notice: "Anime was successfully created."
+        return
       else
         render :new, status: :unprocessable_entity
       end
@@ -38,7 +42,8 @@ module Admin
       @anime.attributes = anime_params
 
       if @anime.save
-        redirect_to admin_animes_path, notice: "Anime was successfully updated.", status: :ok
+        redirect_to admin_animes_path, notice: "Anime was successfully updated."
+        return
       else
         render :edit, status: :unprocessable_entity
       end
@@ -48,7 +53,7 @@ module Admin
       authorize Anime, :destroy?
 
       @anime.destroy
-      redirect_to admin_users_path, notice: "User was successfully destroyed.", status: :ok
+      redirect_to admin_users_path, notice: "User was successfully destroyed."
     end
 
     private
