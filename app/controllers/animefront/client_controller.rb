@@ -1,5 +1,7 @@
 module Animefront
   class ClientController < ApplicationController
+    layout "animefront/layouts/application"
+
     include Pundit::Authorization
 
     def policy_scope(scope)

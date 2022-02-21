@@ -1,5 +1,5 @@
 module Animefront
-  class HomeController < ApplicationController
+  class HomeController < ClientController
     def index
     end
   end

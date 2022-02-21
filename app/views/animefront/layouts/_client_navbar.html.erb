@@ -1,0 +1,40 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <%= link_to icon("fas fa-2x", "home", "Home"), root_path, class: "navbar-item" %>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <%= link_to "Animes", animes_path, class: "navbar-item" %>
+
+      <% if current_user %>
+        <%= link_to "Favoritos", favorites_path, class: "navbar-item" %>
+        <%= link_to "Seguidos", following_path, class: "navbar-item" %>
+      <% end %>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <a class="button is-dark is-outlined is-static">
+          Olá, <%= current_user.name %>
+        </a>
+      </div>
+      <div class="navbar-item">
+        <div class="buttons">
+          <% if current_user %>
+            <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "button is-danger" %>
+          <% else %>
+            <%= link_to "Cadastre-se", new_user_registration_path, class: "button is-primary" %>
+            <%= link_to "Entrar", new_user_session_path, class: "button is-light" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
