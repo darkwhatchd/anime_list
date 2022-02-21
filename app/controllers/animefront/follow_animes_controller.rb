@@ -12,7 +12,7 @@ module Animefront
       authorize @follow_anime, :create?
 
       if @follow_anime.save
-        redirect_to "/following", status: :ok
+        redirect_to "/following"
       else
         flash.now[:notice] = "Unable to follow this anime"
       end
@@ -24,7 +24,7 @@ module Animefront
 
       UnfollowFavorite.new(current_user, @following_anime).unfollow_favorite
       if @following_anime.destroy
-        redirect_to "/following", status: :ok
+        redirect_to "/following"
       else
         flash.now[:notice] = "Unable to unfollow this anime"
       end

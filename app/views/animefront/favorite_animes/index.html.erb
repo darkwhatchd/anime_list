@@ -1,0 +1,21 @@
+<section class="section">
+  <% @favorites.each do |favorite| %>
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        <a href="<%= anime_path(favorite.anime) %>"><%= image_tag favorite.anime.cover %></a>
+        <p class="title"><%= favorite.anime.name %></p>
+        <p class="subtitle">Lançamento: <%= favorite.anime.release_date.strftime("%d/%m/%Y") %></p>
+        <div class="field is-grouped is-grouped-centered">
+          <p class="control">
+            <%= link_to "Remover Favorito", anime_favorite_anime_path(favorite.anime, favorite), method: :delete, class: "button is-danger" %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+
+<div class="pagination">
+  <p class="title"><%= paginate @favorites %></p>
+</div>
+</section>

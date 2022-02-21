@@ -4,7 +4,9 @@ module Animefront
 
     def index
       authorize FavoriteAnime, :index?
-      @favorites = current_user.favorite_animes
+      @favorites = current_user.favorite_animes.order(
+        created_at: :desc,
+      ).page(params[:page]).per(5)
     end
 
     def create
@@ -14,7 +16,7 @@ module Animefront
       if @favorite.save
         FollowFavorite.new(current_user, @favorite).follow_favorite
 
-        redirect_to "/favorites", status: :ok
+        redirect_to "/favorites"
       else
         flash.now[:notice] = "Unable to favorite this anime"
       end
@@ -25,7 +27,7 @@ module Animefront
       authorize @favorite, :destroy?
 
       if @favorite.destroy
-        redirect_to "/favorites", status: :ok
+        redirect_to "/favorites"
       else
         flash.now[:notice] = "Unable to unfavorite this anime"
       end
