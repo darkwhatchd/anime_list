@@ -10,13 +10,9 @@ module Admin
         created_at: :desc,
       ).page(params[:page]).per(15)
 
-      @favorites = FavoriteAnime.all.order(
-        created_at: :desc,
-      ).page(params[:page]).per(15)
+      @favorites = FavoriteAnime.all
 
-      @following = FollowAnime.all.order(
-        created_at: :desc,
-      ).page(params[:page]).per(15)
+      @following = FollowAnime.all
     end
   end
 end
