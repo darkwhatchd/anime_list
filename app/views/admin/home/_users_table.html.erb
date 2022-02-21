@@ -2,8 +2,9 @@
   <table class="table is-striped is-fullwidth">
     <thead class="has-text-centered">
       <tr>
-        <th>ID do Usuário</th>
+        <th>ID</th>
         <th>Nome</th>
+        <th>Perfil</th>
         <th>Email</th>
         <th>Favoritos</th>
         <th>Seguidos</th>
@@ -15,6 +16,7 @@
       <tr>
         <td class="has-text-centered"><%= user.id %></td>
         <td class="has-text-centered"><%= user.name %></td>
+        <td class="has-text-centered"><%= user.profile %></td>
         <td class="has-text-centered"><%= user.email %></td>
         <td class="has-text-centered"><%= user.favorite_animes.size %></td>
         <td class="has-text-centered"><%= user.follow_animes.size %></td>

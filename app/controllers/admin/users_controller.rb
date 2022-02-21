@@ -22,6 +22,7 @@ module Admin
 
     def new
       authorize User, :new?
+      @user = User.new
     end
 
     def edit

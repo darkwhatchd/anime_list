@@ -1,0 +1,59 @@
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+    <div class="card">
+      <div class="card-header">
+        <p class="card-header-title">Formulário de Usuário</p>
+      </div>
+      <div class="card-content">
+        <%= form_with(model: user, url: url) do |form| %>
+          <% if user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+              <ul>
+                <% user.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= form.label :name, class: "label" %>
+            <div class="control">
+              <%= form.text_field :name, class: "input is-primary", placeholder: "Nome" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= form.label :email, class: "label" %>
+            <div class="control">
+              <%= form.text_field :email, class: "input is-primary", placeholder: "Email" %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= form.label :profile, class: "label" %>
+            <div class="select is-primary">
+              <%= form.select :profile, User.profiles.keys.map { |w| [w.humanize, w] } %>
+            </div>
+          </div>
+
+          <div class="field">
+            <%= form.label :password, class: "label" %>
+            <%= form.password_field :password, class: "input is-primary", placeholder: "Senha" %>
+          </div>
+
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              <%= form.submit "Concluído", class: "button is-primary" %>
+            </div>
+            <div class="control">
+              <%= link_to "Voltar", admin_users_path, class: "button is-warning" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
