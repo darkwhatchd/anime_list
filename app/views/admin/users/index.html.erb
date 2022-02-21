@@ -1,0 +1,32 @@
+<div class="columns">
+  <div class="column is-full">
+    <nav class="level">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Usuários</p>
+          <p class="title"><%= @users.size %></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Novo Usuário</p>
+          <%= link_to icon("fas", "user"), new_admin_user_path, class: "button is-primary is-outlined" %>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Voltar</p>
+          <%= link_to icon("fas", "arrow-left"), (:back || admin_root_path), class: "button is-primary is-outlined" %>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<hr>
+
+<div class="columns">
+  <div class="column">
+    <%= render "admin/home/users_table", users: @users %>
+  </div>
+</div>

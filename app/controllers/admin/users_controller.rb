@@ -4,7 +4,9 @@ module Admin
 
     def index
       authorize User, :index?
-      @users = User.all
+      @users = User.all.order(
+        created_at: :desc,
+      ).page(params[:page]).per(15)
     end
 
     def show
