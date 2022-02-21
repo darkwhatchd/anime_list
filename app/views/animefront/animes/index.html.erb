@@ -1,0 +1,16 @@
+<section class="section">
+  <% @animes.each do |anime| %>
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        <a href="<%= anime_path(anime) %>"><%= image_tag anime.cover %></a>
+        <p class="title"><%= anime.name %></p>
+        <p class="subtitle">Lançamento: <%= anime.release_date.strftime("%d/%m/%Y") %></p>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+
+<div class="pagination">
+  <p class="title"><%= paginate @animes %></p>
+</div>
+</section>

@@ -1,0 +1,14 @@
+<section class="section">
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <%= image_tag @anime.cover %>
+      <p class="title"><%= @anime.name %></p>
+      <p class="subtitle">Lançamento: <%= @anime.release_date.strftime("%d/%m/%Y") %></p>
+      <p class="subtitle">Status: <%= @anime.status.humanize %></p>
+      <% if @anime.finish_date %>
+        <p class="subtitle">Finalizado em: <%= @anime.finish_date.strftime("%d/%m/%Y") %></p>
+      <% end %>
+      <p class="subtitle"><%= @anime.description %></p>
+    </div>
+  </div>
+</section>
