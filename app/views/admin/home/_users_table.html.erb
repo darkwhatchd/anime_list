@@ -1,0 +1,37 @@
+<div class="table-container">
+  <table class="table is-striped is-fullwidth">
+    <thead class="has-text-centered">
+      <tr>
+        <th>ID do Usuário</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Favoritos</th>
+        <th>Seguidos</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td class="has-text-centered"><%= user.id %></td>
+        <td class="has-text-centered"><%= user.name %></td>
+        <td class="has-text-centered"><%= user.email %></td>
+        <td class="has-text-centered"><%= user.favorite_animes.size %></td>
+        <td class="has-text-centered"><%= user.follow_animes.size %></td>
+        <td>
+          <%= link_to icon("fas", "eye", "Ver"), admin_user_path(user) %> |
+          <%= link_to icon("fas", "pen", "Editar"), edit_admin_user_path(user) %> |
+          <%= link_to icon("fas", "trash-alt", "Deletar"), admin_user_path(user), method: :delete, data: { confirm: "Tem certeza?" } if user.otaku? %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="pagination">
+  <p class="title"><%= paginate @users %></p>
+</div>
+
+<% if @users.blank? %>
+  <p class="title is-4 has-text-info has-text-centered">Nenhum usuário aqui :(</p>
+<% end %>

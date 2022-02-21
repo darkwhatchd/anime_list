@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+body, html{
+  height: 100%;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}

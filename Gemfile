@@ -6,6 +6,7 @@ ruby "3.0.1"
 gem "devise"
 gem "pundit"
 gem "font-awesome-sass", "~> 5.15.1"
+gem "kaminari", :git => "https://github.com/kaminari/kaminari"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem "rails", "~> 6.1.4", ">= 6.1.4.6"

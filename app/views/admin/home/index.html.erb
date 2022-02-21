@@ -1,0 +1,40 @@
+<div class="columns">
+  <div class="column is-full">
+    <nav class="level">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Usuários</p>
+          <p class="title"><%= @users.size %></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Animes</p>
+          <p class="title"><%= @animes.size %></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Favoritos</p>
+          <p class="title"><%= @favorites.size %></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Seguidos</p>
+          <p class="title"><%= @following.size %></p>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+<hr>
+<div class="columns">
+  <div class="column is-half">
+    <%= render "users_table", users: @users %>
+  </div>
+
+  <div class="column is-half">
+    <%= render "animes_table", animes: @animes %>
+  </div>
+</div>

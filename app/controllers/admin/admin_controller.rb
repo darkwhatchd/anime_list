@@ -1,5 +1,7 @@
 module Admin
   class AdminController < ApplicationController
+    layout "admin/layouts/application"
+
     include Pundit::Authorization
     after_action :verify_authorized
 

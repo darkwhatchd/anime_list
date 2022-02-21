@@ -11,6 +11,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "admin/layouts/admin_navbar" %>
+    <div class="section">
+      <%= yield %>
+    </div>
   </body>
 </html>

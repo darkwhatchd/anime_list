@@ -1,0 +1,41 @@
+<div class="table-container">
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th class="has-text-centered">Cover</th>
+        <th class="has-text-centered">ID</th>
+        <th class="has-text-centered">Nome</th>
+        <th class="has-text-centered">Status</th>
+        <th class="has-text-centered">Release Date</th>
+        <th class="has-text-centered">Finish Date</th>
+        <th colspan="3" class="has-text-centered">Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @animes.each do |anime| %>
+        <tr>
+          <td class="has-text-centered"><%= image_tag anime.cover, size: "70x70" %></td>
+          <td class="has-text-centered"><%= anime.id %></td>
+          <td class="has-text-centered"><%= anime.name %></td>
+          <td class="has-text-centered"><%= anime.status %></td>
+          <td class="has-text-centered"><%= anime.release_date %></td>
+          <td class="has-text-centered"><%= anime.finish_date %></td>
+          <td>
+            <%= link_to icon("fas", "eye", "Ver |"), admin_anime_path(anime) %>
+            <%= link_to icon("fas", "pen", "Editar |"), edit_admin_anime_path(anime) %>
+            <%= link_to icon("fas", "trash-alt", "Deletar"), admin_anime_path(anime), method: :delete, data: { confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="pagination">
+  <p class="title"><%= paginate @animes %></p>
+</div>
+
+<% if @animes.blank? %>
+  <p class="title is-4 has-text-info has-text-centered">Nenhum anime aqui :(</p>
+<% end %>

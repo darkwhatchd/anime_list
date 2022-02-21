@@ -17,3 +17,4 @@ require("trix")
 require("@rails/actiontext")
 
 import 'bulma/css/bulma.css'
+import "../packs/admin_navbar"
