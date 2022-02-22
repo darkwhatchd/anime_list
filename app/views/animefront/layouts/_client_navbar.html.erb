@@ -30,6 +30,9 @@
       <div class="navbar-item">
         <div class="buttons">
           <% if current_user %>
+            <% if current_user.admin? %>
+              <%= link_to "Modo Admin", admin_root_path, class: "button is-info" %>
+            <% end %>
             <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "button is-danger" %>
           <% else %>
             <%= link_to "Cadastre-se", new_user_registration_path, class: "button is-primary" %>
