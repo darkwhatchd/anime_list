@@ -1,0 +1,56 @@
+<div class="section">
+  <div class="columns">
+    <div class="column is-4 is-offset-4">
+      <h2 class="title">Editar Cadastro</h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+
+        <div class="field">
+          <%= f.label :name, class: "label" %><br />
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "input is-primary" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :email, class: "label" %><br />
+          <%= f.email_field :email, autocomplete: "email", class: "input is-primary" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field">
+          <%= f.label :password, class: "label" %><i>(leave blank if you don't want to change it)</i><br />
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "input is-primary" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation, class: "label" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input is-primary" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "input is-primary" %>
+        </div>
+
+        <div class="field is-grouped is-grouped-centered">
+          <p class="control">
+            <%= f.submit "Atualizar", class: "button is-primary" %>
+          </p>
+          <p class="control">
+            <p>Insatisfeito? <%= button_to "Cancelar conta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "input is-primary" %></p>
+          </p>
+          <p class="control">
+            <%= link_to "Voltar", root_path, class: "button is-outlined" %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

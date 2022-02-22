@@ -30,9 +30,9 @@ RSpec.describe "Animefront::FollowAnimes, as :otaku", type: :request do
       expect(follow_anime_params[:follow_anime][:anime_id]).to eq expected_anime.id
     end
 
-    it "returns success status" do
+    it "returns found status" do
       post url, headers: sign_in(otaku), params: follow_anime_params
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:found)
     end
   end
 
@@ -46,9 +46,9 @@ RSpec.describe "Animefront::FollowAnimes, as :otaku", type: :request do
       end.to change(FollowAnime, :count).by(-1)
     end
 
-    it "returns success status" do
+    it "returns found status" do
       delete url, headers: sign_in(otaku)
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:found)
     end
   end
 end
